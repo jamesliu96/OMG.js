@@ -96,6 +96,19 @@
                 return this[this.length + a];
             }
         },
+        remove: function(a) {
+            this.splice(a, 1);
+            return this;
+        },
+        delete: function(a) {
+            for (var i = 0; i < this.length; i++) {
+                if (this[i] == a) {
+                    this.remove(i);
+                    i--;
+                }
+            }
+            return this;
+        },
         isEmpty: function() {
             return this.length === 0;
         }
