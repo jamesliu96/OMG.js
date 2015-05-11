@@ -36,6 +36,13 @@
         },
         isUndefined: function() {
             return "undefined" === typeof this;
+        },
+        each: function(a) {
+            if (a.isFunction) {
+                for (var i in this) {
+                    a.call(this[i]);
+                }
+            }
         }
     });
 
@@ -92,7 +99,7 @@
         each: function(a) {
             if (a.isFunction) {
                 for (var i = 0; i < this.length; i++) {
-                    a(this[i]);
+                    a.call(this[i]);
                 }
             }
         },
