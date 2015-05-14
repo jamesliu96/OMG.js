@@ -5,14 +5,16 @@
  * Copyright (c) 2015 James Liu
  * Released under the MIT license
  */
-(function() {
-    var __extend = function(a, b) {
-        for (var i in b) {
-            a[i] = b[i];
+;(function() {
+    Object.prototype.extend = function(a) {
+        for (var i in a) {
+            if (!(i in this)) {
+                this[i] = a[i];
+            }
         }
     };
 
-    __extend(Object.prototype, {
+    Object.prototype.extend({
         isObject: function() {
             return Object.prototype.toString.call(this) === "[object Object]";
         },
@@ -46,7 +48,7 @@
         }
     });
 
-    __extend(Number.prototype, {
+    Number.prototype.extend({
         abs: function() {
             return Math.abs(this);
         },
@@ -82,7 +84,7 @@
         }
     });
 
-    __extend(String.prototype, {
+    String.prototype.extend({
         reverse: function() {
             return this.split('').reverse().join('');
         },
@@ -95,7 +97,7 @@
         }
     });
 
-    __extend(Array.prototype, {
+    Array.prototype.extend({
         each: function(a) {
             if (a.isFunction) {
                 for (var i = 0; i < this.length; i++) {
@@ -127,4 +129,4 @@
             return this.length === 0;
         }
     });
-})();
+}).call(this);
