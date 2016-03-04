@@ -40,7 +40,7 @@
             return "undefined" === typeof this;
         },
         each: function(a) {
-            if (a.isFunction) {
+            if (a.isFunction()) {
                 for (var i in this) {
                     a.call(this[i]);
                 }
@@ -74,8 +74,8 @@
             return Math.pow(this, a);
         },
         times: function(a) {
-            if (this.isInteger) {
-                if (a.isFunction) {
+            if (this.isInteger()) {
+                if (a.isFunction()) {
                     for (var i = 0; i < this; i++) {
                         a.call(this);
                     }
@@ -99,7 +99,7 @@
 
     Array.prototype.extend({
         each: function(a) {
-            if (a.isFunction) {
+            if (a.isFunction()) {
                 for (var i = 0; i < this.length; i++) {
                     a.call(this[i]);
                 }
